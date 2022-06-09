@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.IO;
 
 namespace CarsServer.WebApi
 {
@@ -60,6 +62,14 @@ namespace CarsServer.WebApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseFileServer(new FileServerOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "storage", "images")),
+                RequestPath = "/image",
+                EnableDefaultFiles = true
+            });
 
             app.UseEndpoints(endpoints =>
             {

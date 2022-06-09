@@ -24,14 +24,5 @@ namespace CarsServer.WebApi.Controllers
             var fileName = _imageService.SaveFile(Request);
             return Ok(fileName);
         }
-
-        [HttpGet("{fileName}")]
-        public ActionResult GetDownload(string fileName)
-        {
-            string file_path = $"{Environment.CurrentDirectory}\\{_optionsMonitor.CurrentValue.StorageImagePath}{fileName}";
-            if(_imageService.ExistFile(file_path))
-            return PhysicalFile(file_path, "image/jpeg", fileName);
-            return BadRequest();
-        }
     }
 }
