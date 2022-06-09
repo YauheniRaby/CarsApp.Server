@@ -82,6 +82,7 @@ namespace CarsServer.DA.Repositories
         
         public Task CreateOrUpdateAsync(Car car, string pathStorage)
         {
+            Directory.CreateDirectory(pathStorage);
             var fullPath = PathHelper.CombineForJson(pathStorage, car.Id.ToString());
             return File.WriteAllTextAsync(fullPath, JsonSerializer.Serialize(car));
         }

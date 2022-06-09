@@ -19,8 +19,4 @@
     <ProjectReference Include="..\CarsServer.DA\CarsServer.DA.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="storage\jsons\" />
-  </ItemGroup>
-
 </Project>
