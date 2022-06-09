@@ -12,7 +12,7 @@ namespace CarsServer.WebApi.Controllers
     [Route("api/[controller]")]
     public class CarController : ControllerBase
     {
-        private readonly ICarService _carService; 
+        private readonly ICarService _carService;
         public CarController(ICarService carService)
         {
             _carService = carService;
